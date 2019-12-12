@@ -19,5 +19,10 @@ def edit_instance(model, id, **kwargs):
     commit_changes()
 
 
+def delete_instance(model, id):
+    model.query.filter_by(id=id).delete()
+    commit_changes()
+
+
 def commit_changes():
     db.session.commit()

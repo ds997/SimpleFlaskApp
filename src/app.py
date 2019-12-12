@@ -41,3 +41,9 @@ def edit(cat_id):
     new_price = data['price']
     database.edit_instance(Cats, id=cat_id, price=new_price)
     return json.dumps("Edited"), 200
+
+
+@app.route('/remove/<cat_id>', methods=['DELETE'])
+def remove(cat_id):
+    database.delete_instance(Cats, id=cat_id)
+    return json.dumps("Deleted"), 200

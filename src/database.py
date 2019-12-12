@@ -7,5 +7,10 @@ def add_instance(model, **kwargs):
     commit_changes()
 
 
+def get_all(model):
+    data = model.query.all()
+    return data
+
+
 def commit_changes():
     db.session.commit()

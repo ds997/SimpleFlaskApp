@@ -12,5 +12,12 @@ def get_all(model):
     return data
 
 
+def edit_instance(model, id, **kwargs):
+    instance = model.query.filter_by(id=id).all()[0]
+    for attr, new_value in kwargs:
+        setattr(instance, attr, new_value)
+    commit_changes()
+
+
 def commit_changes():
     db.session.commit()

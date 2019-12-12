@@ -33,3 +33,11 @@ def fetch():
 
         all_cats.append(new_cat)
     return json.dumps(all_cats), 200
+
+
+@app.route('/edit/<cat_id>', methods=['PATCH'])
+def edit(cat_id):
+    data = request.get_json()
+    new_price = data['price']
+    database.edit_instance(Cats, id=cat_id, price=new_price)
+    return json.dumps("Edited"), 200
